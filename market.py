@@ -1,17 +1,29 @@
-def calculate_payment(water_qty: int, fruit_qty: int) -> dict:
-    """Calculate the subtotal, discount, and total payment."""
-    # Unit prices and business constraints
+def get_positive_int(prompt_text):
+    """Prompt the user until a valid non-negative integer is entered."""
+    while True:
+        try:
+            value = int(input(prompt_text))
+            if value >= 0:
+                return value
+            print("Please enter a non-negative number.")
+        except ValueError:
+            print("Invalid input. Please enter a valid whole number.")
+
+
+def calculate_payment(water_qty, fruit_qty):
+    """Calculate the subtotal, discount, and grand total."""
+    # 1. Constants
     WATER_PRICE = 2500
     FRUIT_PRICE = 1800
     DISCOUNT_THRESHOLD = 10000
     DISCOUNT_AMOUNT = 1000
 
-    # Calculate item subtotals
+    # 2. Subtotals
     water_subtotal = water_qty * WATER_PRICE
     fruit_subtotal = fruit_qty * FRUIT_PRICE
     subtotal = water_subtotal + fruit_subtotal
 
-    # Apply conditional promotion rule
+    # 3. Discount condition
     if subtotal >= DISCOUNT_THRESHOLD:
         discount = DISCOUNT_AMOUNT
     else:
@@ -30,21 +42,16 @@ def calculate_payment(water_qty: int, fruit_qty: int) -> dict:
     }
 
 
-def print_receipt(data: dict, order_title: str) -> None:
-    """Print a clean, easy-to-read ticket breakdown in the terminal."""
+def print_receipt(data):
+    """Display the clean receipt breakdown."""
     line_width = 38
 
     print("\n" + "=" * line_width)
-    print(f" {order_title.upper()}")
+    print(" ORDER SUMMARY")
     print("=" * line_width)
-
-    # Line items
     print(f" Water  (x{data['water_qty']}){' ' * 16} ${data['water_subtotal']:>7,}")
     print(f" Fruit  (x{data['fruit_qty']}){' ' * 16} ${data['fruit_subtotal']:>7,}")
-
     print("-" * line_width)
-
-    # Calculation breakdown
     print(f" Subtotal:{' ' * 17} ${data['subtotal']:>7,}")
 
     if data["discount"] > 0:
@@ -58,11 +65,12 @@ def print_receipt(data: dict, order_title: str) -> None:
 
 
 if __name__ == "__main__":
-    # Test Case 1: Original problem (3 waters, 2 fruits)
-    order_1 = calculate_payment(water_qty=3, fruit_qty=2)
-    print_receipt(order_1, "Case 1: Standard Order")
+    print("=== Welcome to the Store ===")
 
-    # Test Case 2: Under discount threshold (2 waters, 1 fruit)
-    order_2 = calculate_payment(water_qty=2, fruit_qty=1)
-    print_receipt(order_2, "Case 2: Low-value Order")
-    
+    # User inputs
+    waters = get_positive_int("Enter number of water bottles: ")
+    fruits = get_positive_int("Enter number of fruits: ")
+
+    # Process and output
+    result = calculate_payment(waters, fruits)
+    print_receipt(result)
