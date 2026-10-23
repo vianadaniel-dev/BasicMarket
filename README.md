@@ -1,74 +1,74 @@
-# Active Pause Purchase Calculator
+# Calculadora de Compras para Pausa Activa
 
-Simple Python program to calculate the total cost of a purchase with a conditional discount.
+Programa simple en Python para calcular el costo total de una compra con descuento condicional.
 
 ---
 
-## 1. Inputs, Process, and Output
+## 1. Entradas, Proceso y Salida
 
-* **Inputs:**
-  * Water bottle: $2,500 each.
-  * Fruit: $1,800 each.
-  * Discount: $1,000 off if subtotal is $10,000 or more.
-* **Process:**
+- **Entradas:**
+  * Botella de agua: $2.500 c/u.
+  * Fruta: $1.800 c/u.
+  * Descuento: $1.000 de descuento si el subtotal es de $10.000 o más.
+- **Proceso:**
   * `subtotal = (water_qty * 2500) + (fruit_qty * 1800)`
-  * `discount = 1000` if `subtotal >= 10000`, else `0`
+  * `discount = 1000` si `subtotal >= 10000`, de lo contrario `0`
   * `total = subtotal - discount`
-* **Output:** Total amount to pay.
+- **Salida:** Monto total a pagar.
 
 ---
 
-## 2. Execution Steps
+## 2. Pasos de Ejecución
 
-1. Set the quantities for water and fruit.
-2. Define unit prices and discount rules.
-3. Compute item subtotals.
-4. Sum both values to get the overall subtotal.
-5. Check if the subtotal is >= $10,000 to apply the $1,000 discount.
-6. Subtract the discount from the subtotal.
-7. Print the final total.
-
----
-
-## 3. Variables Used
-
-* `WATER_PRICE`: $2,500
-* `FRUIT_PRICE`: $1,800
-* `DISCOUNT_THRESHOLD`: $10,000
-* `DISCOUNT_AMOUNT`: $1,000
-* `water_qty`: Number of water bottles
-* `fruit_qty`: Number of fruits
-* `subtotal`: Cost before discount
-* `discount`: Applied discount ($0 or $1,000)
-* `total`: Final amount to pay
+1. Definir o ingresar las cantidades de agua y fruta.
+2. Definir los precios unitarios y las reglas de descuento.
+3. Calcular los subtotales de cada producto.
+4. Sumar ambos valores para obtener el subtotal general.
+5. Verificar si el subtotal es >= $10.000 para aplicar el descuento de $1.000.
+6. Restar el descuento al subtotal.
+7. Mostrar el total final en pantalla.
 
 ---
 
-## 4. Test Case 1 (Problem Statement)
+## 3. Variables Utilizadas
 
-* **Cart:** 3 waters, 2 fruits
-* **Subtotal:** (3 × 2,500) + (2 × 1,800) = 7,500 + 3,600 = $11,100
-* **Discount:** $1,000 (since $11,100 >= $10,000)
-* **Total:** $10,100
-
----
-
-## 5. Test Case 2 (Alternative Test)
-
-* **Cart:** 2 waters, 1 fruit
-* **Subtotal:** (2 × 2,500) + (1 × 1,800) = 5,000 + 1,800 = $6,800
-* **Discount:** $0 (since $6,800 < $10,000)
-* **Total:** $6,800
+- `WATER_PRICE`: $2.500 (Precio unitario del agua)
+- `FRUIT_PRICE`: $1.800 (Precio unitario de la fruta)
+- `DISCOUNT_THRESHOLD`: $10.000 (Monto mínimo para descuento)
+- `DISCOUNT_AMOUNT`: $1.000 (Valor del descuento)
+- `water_qty`: Cantidad de botellas de agua
+- `fruit_qty`: Cantidad de frutas
+- `subtotal`: Costo antes del descuento
+- `discount`: Descuento aplicado ($0 o $1.000)
+- `total`: Monto final a pagar
 
 ---
 
-## 6. Question on Ambiguity
+## 4. Caso de Prueba 1 (Enunciado del Problema)
 
-> *"Is the $1,000 discount applied only once per purchase, or does it multiply for every $10,000 spent (e.g., $2,000 off for a $20,000 subtotal)?"*
+- **Carrito:** 3 aguas, 2 frutas
+- **Subtotal:** (3 × 2.500) + (2 × 1.800) = 7.500 + 3.600 = $11.100
+- **Descuento:** $1.000 (dado que $11.100 >= $10.000)
+- **Total:** $10.100
 
 ---
 
-## How to Run
+## 5. Caso de Prueba 2 (Prueba Alternativa)
+
+- **Carrito:** 2 aguas, 1 fruta
+- **Subtotal:** (2 × 2.500) + (1 × 1.800) = 5.000 + 1.800 = $6.800
+- **Descuento:** $0 (dado que $6.800 < $10.000)
+- **Total:** $6.800
+
+---
+
+## 6. Pregunta sobre Ambigüedad
+
+> *"¿El descuento de $1.000 se aplica solo una vez por compra, o es acumulable por cada $10.000 gastados (por ejemplo, $2.000 de descuento si el subtotal alcanza $20.000)?"*
+
+---
+
+## Cómo Ejecutar
 
 ```bash
-python market.py
+python3 market.py
